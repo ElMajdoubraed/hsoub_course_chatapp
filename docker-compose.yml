@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: chatapp_server
+    container_name: chatapp_server_container
+    ports:
+      - 4000:4000
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./server:/usr/src/app
+    networks:
+      - chatapp
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    command: npm run start
+    image: chatapp_web
+    container_name: chatapp_web_container
+    depends_on:
+      - server
+    ports:
+      - 3000:3000
+    volumes:
+      - ./web:/usr/src/app
+    networks:
+      - chatapp
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    command: [nginx-debug, "-g", "daemon off;"]
+    depends_on:
+      - web
+      - server
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - chatapp
+
+networks:
+  chatapp:
+    driver: bridge
+
+volumes:
+  chatapp-volume:
