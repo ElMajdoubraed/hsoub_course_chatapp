@@ -37,7 +37,6 @@ const onSocketDisconnected = (socket) => {
       [socket.user.id]: lastSeen,
     });
   }
-  console.log("Client disconnected: " + socket.user.username);
 };
 
 const onMessage = (socket, data) => {
@@ -60,7 +59,6 @@ const onTyping = (socket, receiver) => {
 
 const onSeen = (socket, sender) => {
   let receiver = socket.user.id;
-  console.log({ sender, receiver, seen: false });
   Message.updateMany(
     { sender, receiver, seen: false },
     { seen: true },
