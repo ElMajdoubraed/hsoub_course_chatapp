@@ -54,7 +54,7 @@ class EditProfile extends React.Component {
 
   render() {
     return (
-      <div className={this.props.open ? "side-profile open" : "side-profile"}>
+      <div className={this.props.open ? "side-profile open " : "side-profile"}>
         <Row className="heading">
           <div className="mr-2 nav-link" onClick={this.onClose}>
             <i className="fa fa-arrow-right" />
@@ -62,8 +62,11 @@ class EditProfile extends React.Component {
           <div>الملف الشخصي</div>
         </Row>
 
-        <div className="d-flex flex-column" style={{ overflow: "auto" }}>
-          <Form onSubmit={this.onSubmit}>
+        <div
+          className="d-flex flex-column auth _card_"
+          style={{ overflow: "auto" }}
+        >
+          <form onSubmit={this.onSubmit}>
             <Error error={this.state.error} />
 
             <div className="text-center" onClick={this.showFileUpload}>
@@ -77,34 +80,28 @@ class EditProfile extends React.Component {
               className="d-none"
             />
 
-            <div className="bg-white px-4 py-2">
-              <label className="text-muted">الاسم</label>
-              <Input
-                value={this.state.name}
-                name="name"
-                onChange={this.onChange}
-                required
-                autoComplete="off"
-              />
-            </div>
+            <label className="label-muted">الاسم</label>
+            <input
+              className="input__profile"
+              value={this.state.name}
+              name="name"
+              onChange={this.onChange}
+              required
+            />
 
-            <div className="bg-white px-3 py-2">
-              <label className="text-muted">رسالة الحالة</label>
-              <Input
-                value={this.state.about}
-                name="about"
-                onChange={this.onChange}
-                required
-                autoComplete="off"
-              />
-            </div>
+            <label className="label-muted">رسالة الحالة</label>
+            <input
+              className="input__profile"
+              value={this.state.about}
+              name="about"
+              onChange={this.onChange}
+              required
+            />
 
-            <div className="bg-white px-3 py-2">
-              <Button block className="mt-3">
-                حفظ
-              </Button>
+            <div className="px-3 py-2">
+              <button className="_btn_ btn__primary mt-3">حفظ</button>
             </div>
-          </Form>
+          </form>
         </div>
       </div>
     );

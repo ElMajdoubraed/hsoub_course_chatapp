@@ -2,7 +2,7 @@ import React from "react";
 import avatar from "assets/avatar.png";
 
 const Avatar = (props) => {
-  let src = props.src ? `uploads/${props.src}` : avatar;
+  let src = props.src ? `api/uploads/${props.src}` : avatar;
   return (
     <img
       src={props.file || src}

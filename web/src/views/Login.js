@@ -54,10 +54,7 @@ class Login extends React.Component {
             placeholder="كلمة المرور"
             required
           />
-          <button block className="_btn_ btn__primary mb-3">
-            {" "}
-            تسجيل الدخول{" "}
-          </button>
+          <button className="_btn_ btn__primary mb-3"> تسجيل الدخول </button>
           <small>
             <Link to="/register">إنشاء حساب جديد</Link>
           </small>

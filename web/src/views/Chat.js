@@ -87,7 +87,7 @@ class Chat extends React.Component {
   };
 
   initSocketConnection = () => {
-    let socket = socketIO("ws://localhost:4000", {
+    let socket = socketIO(process.env.REACT_APP_SOCKET, {
       query: "token=" + Auth.getToken(),
     });
     socket.on("connect", () => this.setState({ connected: true }));
