@@ -16,3 +16,6 @@ Open terminal, and run
 ```sh
 docker-compose up -d
 ```
+### Project url
+
+Project url: https://hsoub.elmajdoub.live
